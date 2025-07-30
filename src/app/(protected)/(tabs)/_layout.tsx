@@ -2,10 +2,23 @@ import { Tabs } from "expo-router";
 import AntDesign from '@expo/vector-icons/AntDesign'
 import Feather from '@expo/vector-icons/Feather'
 import Ionicons from '@expo/vector-icons/Ionicons'
+import { useAuth, useClerk } from "@clerk/clerk-expo";
 
 export default function TabLayout() {
+    const { signOut } = useClerk()
     return (
-        <Tabs screenOptions={{ tabBarActiveTintColor: 'black' }} >
+        <Tabs screenOptions={{ 
+            tabBarActiveTintColor: 'black', 
+            headerRight:() => 
+                <Feather 
+                    name= 'log-out'
+                    size= {22}
+                    color='black'
+                    style= {{ paddingRight: 10 }}
+                    onPress={() => signOut()}
+                />
+            
+        }} >
             <Tabs.Screen
                 name="index"
                 options={{
