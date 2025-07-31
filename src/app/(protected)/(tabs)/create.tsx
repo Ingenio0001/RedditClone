@@ -1,7 +1,7 @@
 import { View, Text, Pressable, StyleSheet, TextInput, KeyboardAvoidingView, ScrollView, Platform, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AntDesign from '@expo/vector-icons/AntDesign'
-import { router } from "expo-router";
+import { Link, router } from "expo-router";
 import { useState } from "react";
 
 export default function Create() {
@@ -29,13 +29,13 @@ export default function Create() {
             <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? "padding" : undefined} style={{ flex: 1 }}>
 
                 <ScrollView showsVerticalScrollIndicator={false} style={{ marginVertical: 15}}>
-                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <Link href={'groupSelector'} asChild>
                         {/* Community Selector */}
-                        <View style={styles.communityContainer}>
+                        <Pressable style={styles.communityContainer}>
                             <Text style={styles.rStyles}>r</Text>
                             <Text>Select a community</Text>
-                        </View>
-                    </TouchableWithoutFeedback>
+                        </Pressable>
+                    </Link>
 
 
 
